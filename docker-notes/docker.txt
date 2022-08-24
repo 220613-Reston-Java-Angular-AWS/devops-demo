@@ -1,0 +1,60 @@
+Steps to deploy an application
+	- mvn clean package -- need Maven
+		- creates an artifact to be deployed
+	- java -jar [name-of-app].jar -- need JRE 8
+
+
+Dockerfile
+	- a simple textfile that contains a list of commands to be create a docker image
+		- note: a Dockerfile does not have a file extension
+		- https://docs.docker.com/engine/reference/builder/
+		- FROM [base-image]
+			- image to be built upon/usually runtime environment for an application
+		- ADD [url]
+			- to add a file from online to a container
+		- COPY [Host filesystem] [container filesystem]
+			- used to copy and rename(if desired) files to a container
+		- ENV
+			- used to specfify environment variables
+				- note: can specify environment variables at runtime as well
+		- CMD/RUN
+			- run commands
+		- ENTRYPOINT
+			- specify the entrypoint of the application
+Docker Image
+	- blueprint for an application
+		- includes everything needed to run an application
+			- the artifact
+			- runtime, dependencies...
+	- used to create containers
+Docker Container
+	- a running process, isolated from the host and from each other
+	- each container interacts with its own filesystem provided by the docker image
+
+Docker Volume
+	- preferred way to persist data generated and used by Docker containers
+	- can be shared by containers
+
+Basic Docker commands:
+	- docker
+	- docker images
+	- docker build -t [image-name] . (location of Dockerfile)
+	- docker run -p [host-port]:[container-port] -d (detached mode) --name [container-name] [image-name]
+	- docker ps
+		- list running containers
+		- -a flag to list stopped containers
+	- docker stop [container-id]
+	- docker logs [container-id]
+
+
+
+
+
+
+
+
+
+
+
+
+
