@@ -1,0 +1,25 @@
+server:
+  port: 8088
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: user
+    password: pass
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+
+# Actuator settings to display more metrics about the application
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
