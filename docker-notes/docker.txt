@@ -46,6 +46,12 @@ Basic Docker commands:
 	- docker stop [container-id]
 	- docker logs [container-id]
 
+Multi-stage build
+	- using multiple FROM statements in a dockerfile to specify different environments for each stage of the build
+	- Once a build stage has been executed, the base image can be discarded (automatically)
+		- artifacts can be copied from one stage to another
+		- this allows us to keep the size of the image down
+
 
 
 
