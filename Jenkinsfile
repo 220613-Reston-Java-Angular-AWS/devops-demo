@@ -5,6 +5,9 @@ pipeline {
         PORT_CONT="8088"
         IMAGE_TAG="devops-demo"
         CONTAINER_NAME="devops"
+        DB_URL=credentials('DB_URL')
+        DB_USER=credentials('DB_USER')
+        DB_PASS=credentials('DB_PASS')
     }
 
     stages{
@@ -25,7 +28,7 @@ pipeline {
         }
         stage('run container'){
             steps{
-                sh 'docker run -d -p ${PORT_HOST}:${PORT_CONT} --rm --name ${CONTAINER_NAME} ${IMAGE_TAG}'
+                sh 'docker run -e DB_URL=${DB_URL} -e DB_USER=${DB_USER} -e DB_PASS=${DB_PASS} -d -p ${PORT_HOST}:${PORT_CONT} --name ${CONTAINER_NAME} ${IMAGE_TAG}'
             }
         }
     }
